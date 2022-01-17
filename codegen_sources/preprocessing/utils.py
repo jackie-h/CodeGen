@@ -52,7 +52,8 @@ def get_nlines(file_path):
         f"wc -l {file_path}", shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE
     )
     assert process.returncode == 0
-    return int(process.stdout.decode().split(" ")[0])
+    output = process.stdout.decode().split()
+    return int(output[0])
 
 
 def check_same_number_of_lines(file_path1, file_path2):
@@ -81,7 +82,7 @@ def get_subset_file(file_paths: List[Path], subset_size_gb: int, output_path: Pa
         n_lines = get_nlines(file_path)
         subset_n_lines = int((subset_size_gb / len(file_paths)) * (n_lines / size_gb))
         process = subprocess.run(
-            f"head -q -n {subset_n_lines} {file_path} >> {output_path}",
+            f"head -n {subset_n_lines} {file_path} >> {output_path}",
             shell=True,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,

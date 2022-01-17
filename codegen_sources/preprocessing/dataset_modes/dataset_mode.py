@@ -35,6 +35,7 @@ from codegen_sources.preprocessing.lang_processors.lang_processor import LangPro
 from codegen_sources.preprocessing.lang_processors.python_processor import (
     PythonProcessor,
 )
+from codegen_sources.preprocessing.lang_processors.slang_processor import SlangProcessor
 from codegen_sources.preprocessing.obfuscation.utils_deobfuscation import SEPARATOR
 from codegen_sources.preprocessing.utils import (
     binarize_for_XLM_file,
